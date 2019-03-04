@@ -60,7 +60,7 @@ monit -t
 
 6. reloade config file
 ------------------------
-reloade monit
+monit reload
 ------------------------
 
 
