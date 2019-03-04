@@ -5,7 +5,7 @@
 
 // ! IMPORTANT !   *******************************************
 *
-*
+*   {} --> Optional
 *
 // ! IMPORTANT !   *******************************************
 
@@ -17,6 +17,45 @@ sudo apt update
 -------------------
 
 
+2. install Monit
+------------------------------
+sudo apt-get install monit
+------------------------------
+
+
+3. creat Autostart entry
+------------------------------
+nano /etc/default/monit
+
+// paste in file:
+> startup=1
+------------------------------
+
+
+4. edit configuration file
+------------------------------------------------------------------
+nano /etc/monit/monitrc
+
+// add this to config
+**********************************
+set httpd port 2812
+{    use adress <server-ip>}
+    allow 0.0.0.0/0.0.0.0
+and
+    allow admin:monit
+**********************************
+httpd port: -->             Port für Browserzugriff
+use adress: -->             IP Adresse eingeben
+allow 0.0.0.0/0.0.0.0   ->  Erlaubt Zugriff für Localhost
+allow admin:monit	    ->  Benutzernamen: admin, Passwort: monit
+**********************************
+------------------------------------------------------------------
+
+
+5. check syntax of config file
+------------------------------------
+monit -t
+------------------------------------
 
 
 
